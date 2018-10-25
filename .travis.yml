@@ -1,0 +1,29 @@
+sudo: required
+dist: trusty
+language: bash
+
+jobs:
+  include:
+    - stage: build image
+      script:
+        - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+            TAG=v`date +"%Y%m%d"`;
+            docker run --rm --privileged multiarch/qemu-user-static:register --reset;
+            docker build . -t colachen/openvpn-rpi:latest -t colachen/openvpn-rpi:$TAG;
+          fi
+
+    - stage: test image
+      script:
+        - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+        - docker run --rm colachen/openvpn-rpi ovpn_genconfig -u udp://VPN.SERVERNAME.COM 
+
+    - stage: push image
+      script:
+        - set -ev
+        - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+            TAG=v`date +"%Y%m%d"`;
+            docker images;
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+            docker push colachen/openvpn-rpi:$TAG;
+            docker push colachen/openvpn-rpi:latest;
+          fi
