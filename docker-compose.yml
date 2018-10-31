@@ -1,0 +1,11 @@
+version: '3'
+
+services: 
+  openvpn:
+    container_name: openvpn
+    image: colachen/openvpn-rpi
+    restart: always
+    ports: 
+      - 1194:1194/udp
+    volumes: 
+      - ${PWD}/opevpn:/etc/openvpn 
