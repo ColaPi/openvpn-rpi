@@ -18,4 +18,4 @@ jobs:
     - stage: test image
       script:
         - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-        - docker run --rm colachen/openvpn-rpi ovpn_genconfig -u udp://VPN.SERVERNAME.COM
+        - docker run --rm colachen/openvpn-rpi openvpn --version || echo 0
