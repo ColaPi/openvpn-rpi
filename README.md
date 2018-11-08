@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/colachg/openvpn-rpi.svg?branch=master)](https://travis-ci.org/colachg/openvpn-rpi)  [![](https://images.microbadger.com/badges/version/colachen/openvpn-rpi.svg)](https://microbadger.com/images/colachen/openvpn-rpi "Get your own version badge on microbadger.com")  [![](https://images.microbadger.com/badges/image/colachen/openvpn-rpi.svg)](https://microbadger.com/images/colachen/openvpn-rpi "Get your own image badge on microbadger.com")
+[![Build Status](https://travis-ci.org/ColaPi/openvpn-rpi.svg?branch=master)](https://travis-ci.org/ColaPi/openvpn-rpi)  [![](https://images.microbadger.com/badges/version/colachen/openvpn-rpi.svg)](https://microbadger.com/images/colachen/openvpn-rpi "Get your own version badge on microbadger.com")  [![](https://images.microbadger.com/badges/image/colachen/openvpn-rpi.svg)](https://microbadger.com/images/colachen/openvpn-rpi "Get your own image badge on microbadger.com")
 ---
 # openvpn-rpi
 
@@ -20,9 +20,8 @@ openvpn with ldap in docker on RaspberryPi3.
         openvpn --genkey --secret keys/ta.key
         cp ca.crt server.crt server.key ta.key dh2048.pem openvpn
 ```
-2. mount openvpn to container
 
-3. `docker-compose build` to build or `docker compose up -d` to start.
+2. `docker-compose build` to build or `docker compose up -d` to start.
 
 # More interesting
 https://github.com/colachg/cat
