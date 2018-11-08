@@ -1,10 +1,11 @@
-FROM ubuntu:16.04
+FROM ubuntu
 
 RUN apt update &&\
-    export DEBIAN_FRONTEND=noninteractive &&\
-    apt install -yqq easy-rsa openvpn openvpn-auth-ldap &&\
+    export DEBIAN_FRONTEND=noninteractive;apt install -yqq easy-rsa openvpn openvpn-auth-ldap iptables net-tools&&\
     rm -rf /tmp/*  /cache/*
 
 EXPOSE 1194/udp
 
-CMD [ "/usr/sbin/openvpn", "--cd /etc/openvpn", "--config /etc/openvpn/server.conf", "--script-security 2" ]
+WORKDIR /etc/openvpn
+
+CMD ["/bin/bash", "/etc/openvpn/openvpn_run.sh"]

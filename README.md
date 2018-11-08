@@ -5,6 +5,7 @@
 openvpn with ldap in docker on RaspberryPi3.
 
 # Get Start
+
 1. setup CA
 ```
         sudo apt install easy-rsa openvpn
@@ -20,6 +21,8 @@ openvpn with ldap in docker on RaspberryPi3.
         cp ca.crt server.crt server.key ta.key dh2048.pem openvpn
 ```
 2. mount openvpn to container
+
+3. `docker-compose build` to build or `docker compose up -d` to start.
 
 # More interesting
 https://github.com/colachg/cat
