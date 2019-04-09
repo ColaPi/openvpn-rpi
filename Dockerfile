@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM arm32v7/ubuntu:16.04
 
 RUN apt update &&\
     export DEBIAN_FRONTEND=noninteractive;apt install -yqq easy-rsa openvpn openvpn-auth-ldap iptables net-tools&&\
